@@ -31,7 +31,10 @@ class SkillManagerInterface:
 
     @property
     def task(self):
-        return self.tasks[0]
+        if len(self.tasks) > 0:
+            return self.tasks[0]
+        else:
+            return -1
 
     @property
     def tasks(self):
