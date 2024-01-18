@@ -34,6 +34,33 @@ SkiROS offers the following features:
 
 SkiROS is compatible with Ubuntu 18.04/ROS Melodic and Ubuntu 20.04/ROS Noetic, Python 2 and 3.
 
+### Docker Container
+
+The easiest way to get started is to use the provided Docker container. After installing [Docker](https://docs.docker.com/get-docker/), you can pull the container from Docker Hub and run it with the following commands:
+
+```shell
+docker pull matthiasmayr/skiros2:master
+```
+Then it can be started with:
+```shell
+docker run --rm -it \
+    --device=/dev/dri:/dev/dri \
+    --ipc=host \
+    --net=host \
+    --privileged \
+    --env DISPLAY=$DISPLAY \
+    --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+    --volume ~/.Xauthority:/root/.Xauthority \
+    matthiasmayr/skiros2:master
+```
+The container will start a bash shell. Often it makes sense to start a terminal multiplexer like *tmux*. The code is in the folder `/catkin_ws`.  
+Then to start the SkiROS2 system, run:
+```shell
+roslaunch skiros2 skiros.launch
+# Or try one of the examples like
+roslaunch skiros2_examples turtlesim_example.launch
+```
+
 ### Installation Instructions
 
 To use SkiROS you must have [ROS](https://wiki.ros.org/ROS/Installation) installed on your machine.

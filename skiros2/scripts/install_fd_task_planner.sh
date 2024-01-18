@@ -1,11 +1,22 @@
 #!/bin/bash
-
 echo "Installing planner..."
 
-#Navigate to install folder
+# Check if git is installed
+if ! [ -x "$(command -v git)" ]; then
+    echo "Error: git is not installed." >&2
+    exit 1
+fi
+
 default="~/.skiros/planner"
-echo "Select install folder or leave blank for default [default: $default]:"
-read folder
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    echo "Select install folder or leave blank for default [default: $default]:"
+    read folder
+else
+    folder=$1
+fi
+
+# Navigate to install folder
 if [[ $folder == "" ]]; then
     folder=${default/"~"/$HOME}
 else
