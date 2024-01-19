@@ -237,3 +237,39 @@ class NoFail():
             return state
         else:
             return State.Success
+
+class RetryOnFail():
+    """
+    @brief Like Sequential, but retries up to max_retries if a child node fails.
+           Restarts all child nodes on failure.
+    """
+
+    def __init__(self, max_retries=-1):
+        self.max_retries = max_retries
+        self.i = -1
+        self.index = 0
+
+    def printType(self):
+        return 'RetryOnFail({})'.format(self.max_retries)
+
+    def reset(self):
+        self.i = -1
+        self.index = 0
+
+    def processChildren(self, children, visitor):
+        
+        for i in range(self.index, len(children)):
+            c = children[i]
+            state = c.visit(visitor)
+            if state == State.Failure:
+                self.index = 0
+                self.i += 1
+                if self.i == self.max_retries:
+                    return State.Failure
+                else:
+                    return State.Running
+            elif state != State.Success:
+                return state
+            self.index += 1
+
+        return State.Success
