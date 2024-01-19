@@ -237,3 +237,32 @@ class NoFail():
             return state
         else:
             return State.Success
+
+
+class NoSuccess:
+    """
+    @brief      Returns only running or failure. Success state is converted in
+                Failure state.
+
+                This can be used for recovery procedures one wants to successfully
+                execute the recovery, but still fail towards the parent skill.
+    """
+
+    def __init__(self, processor):
+        self._processor = processor
+
+    def reset(self):
+        self._processor.reset()
+
+    def printType(self):
+        return "NoSuccess({})".format(self._processor.printType())
+
+    def processChildren(self, children, visitor):
+        """
+        Ignore successful execution
+        """
+        state = self._processor.processChildren(children, visitor)
+        if state == State.Running:
+            return state
+        else:
+            return State.Failure
