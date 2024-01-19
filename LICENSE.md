@@ -1,11 +1,3 @@
-SkiROS2 - Skill-based platform for ROS v2
-
-Software License Agreement (L-GPL License)
-
-Copyright (C) 2018 RiACT ApS
-
-Authors: Francesco Rovida, Bjarne Grossmann
-
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published by
 the Free Software Foundation, either version 3 of the License, or

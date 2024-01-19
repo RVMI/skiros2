@@ -1,0 +1,15 @@
+name: Check Licenses
+
+on:
+  push:
+    branches: [ "master", "pr_license"]
+  pull_request:
+    branches: [ "master"]
+
+jobs:
+  check_licenses:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: matthias-mayr/ros_license_toolkit@1.2.3

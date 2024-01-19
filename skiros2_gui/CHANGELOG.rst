@@ -86,7 +86,7 @@ Changelog for package skiros2_gui
 * Added timeout to kill blocked BTs. Minor improvements on GUI
 * GUI improvements: BT execution visualization and more intuitive interface
 * Implemented visualization of active tasks
-* Changed license to L-GPL and updated changelog
+* Changed license to LGPL-3.0-or-later and updated changelog
 * Updated version and changelog file
 * Contributors: Francesco Rovida, Matthias Mayr, Francesco Rovida
 

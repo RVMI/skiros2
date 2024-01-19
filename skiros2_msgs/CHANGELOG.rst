@@ -37,7 +37,7 @@ Changelog for package skiros2_msgs
 * Merged 'develop' into 'pycodestyle'.
 * Finish plan-in-the-tree
 * GUI improvements: BT execution visualization and more intuitive interface
-* Changed license to L-GPL and updated changelog
+* Changed license to LGPL-3.0-or-later and updated changelog
 * Updated version and changelog file
 * Contributors: Matthias Mayr, Francesco Rovida
 

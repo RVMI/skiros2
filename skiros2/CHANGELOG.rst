@@ -72,7 +72,7 @@ Changelog for package skiros2
 * Finish plan-in-the-tree
 * Added extra properties to test robot hardware
 * Changed test camera type
-* Changed license to L-GPL and updated changelog
+* Changed license to LGPL-3.0-or-later and updated changelog
 * Updated version and changelog file
 * Contributors: Matthias Mayr, RvmiLab, Francesco Rovida
 
