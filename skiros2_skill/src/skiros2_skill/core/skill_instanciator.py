@@ -68,7 +68,7 @@ class SkillInstanciator:
         """
         to_set = None
         for p in self._available_instances[skill.type]:
-            if (p.label == skill.label or skill.label == "") and p.label not in ignore_list:
+            if (p.label == skill._label or skill._label == "") and p.label not in ignore_list:
                 to_set = p
                 if not p.hasState(State.Running):  # The skill is available, just go forward
                     break
@@ -76,8 +76,8 @@ class SkillInstanciator:
             if to_set.hasState(State.Running):  # The skill instance is busy, create a new one
                 to_set = self.duplicate_instance(to_set)
             skill.setInstance(to_set)
-        elif skill.label != "" and not ignore_list: # No instance exist, try to load it
-            skill.setInstance(self.add_instance(skill.label))
+        elif skill._label != "" and not ignore_list:  # No instance exist, try to load it
+            skill.setInstance(self.add_instance(skill._label))
         else:
             log.error("assign_instance", "No instance of type {} found.".format(skill.type))
             return False

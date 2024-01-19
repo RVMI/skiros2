@@ -236,7 +236,7 @@ class NodeExecutor():
         """
         @brief If the skill label is not specified, try other instances
         """
-        if skill.label != "":
+        if skill._label != "":
             return False
         ignore_list = [skill._instance.label]
         while self._instanciator.assign_instance(skill, ignore_list):
