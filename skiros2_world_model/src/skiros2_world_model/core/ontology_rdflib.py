@@ -67,11 +67,11 @@ class Ontology:
         if name == "":
             return None
         if name.find("#") > 0:
-            return name
+            return rdflib.term.URIRef(name)
         if name.find(":") < 1:
             if name.find(":") == 0:
                 name = name[1:]
-            return self.add_default_prefix(name)
+            return rdflib.term.URIRef(self.add_default_prefix(name))
         tokens = name.split(":")
         for prefix, uri in self._ontology.namespaces():
             if tokens[0] == prefix:

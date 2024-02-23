@@ -548,9 +548,10 @@ class WorldModel(IndividualsDataset):
         return uri.split('-')[0]
 
     def _uri2id(self, uri):
-        if uri.find('-') < 0:
+        hash_pos = uri.find('#')
+        if hash_pos < 0 or uri.find("-", hash_pos) < 0:
             return -1
-        return int(uri.split('-')[1])
+        return int((uri[hash_pos:]).split('-')[1])
 
     @synchronized
     def load_context(self, filename):

@@ -150,9 +150,13 @@ class Element(object):
         """
         @brief Return the element id number as integer
         """
-        if self._id.find('-') < 0:
+        hash_pos = self._id.find('#')
+        # Search after # if there is one
+        if hash_pos == -1:
+            hash_pos = 0
+        if self._id.find("-", hash_pos) < 0:
             return -1
-        return int(self._id.split('-')[1])
+        return int((self._id[hash_pos:]).split('-')[1])
 
     def setUri(self, eid):
         self._setLastUpdate()
